@@ -7,6 +7,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
+import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLDatatype;
+import org.semanticweb.owlapi.model.OWLLiteral;
+
 import au.com.bytecode.opencsv.CSVReader;
 import edu.utep.cybershare.rim.ontology.Factory;
 import edu.utep.cybershare.rim.ontology.Institution;
@@ -15,7 +19,8 @@ import edu.utep.cybershare.rim.pipeline.Pipeline.Filter;
 public class InstitutionGeocodeFilter implements Filter {
 
 	private HashMap<String, Point2D.Double> institutionToCoordinate;
-
+	private Factory factory;
+	
 	public InstitutionGeocodeFilter(){
 		institutionToCoordinate = new HashMap<String, Point2D.Double>();
 		populateMappings(FilterData.getGeocodedInstitutions());
@@ -45,11 +50,12 @@ public class InstitutionGeocodeFilter implements Filter {
 		String name;
 		Point2D.Double coordinates;
 		for(Institution anInstitution : institutions){
+			//System.out.println(anInstitution.getOwlIndividual().asOWLNamedIndividual().getIRI());
 			name = anInstitution.getHasInstitutionName().iterator().next();
 			coordinates = getCoordinates(name);
 			if(coordinates != null){
-				anInstitution.addHasLongitude(coordinates.getX());
-				anInstitution.addHasLatitude(coordinates.getY());
+				anInstitution.addHasLongitude(getLiteral(coordinates.getX()));
+				anInstitution.addHasLatitude(getLiteral(coordinates.getY()));
 			}
 		}
 	}
@@ -65,6 +71,13 @@ public class InstitutionGeocodeFilter implements Filter {
 	}		
 	
 	public void filter(Factory factory) {
+		this.factory = factory;
 		setInstitutionCoordinates((Collection<Institution>)factory.getAllInstitutionInstances());;
+	}
+	
+	private OWLLiteral getLiteral(double value){
+		OWLDatatype doubleType = factory.getOwlOntology().getOWLOntologyManager().getOWLDataFactory().getOWLDatatype(IRI.create("http://www.w3.org/2001/XMLSchema#double"));
+		OWLLiteral doubleLiteral = factory.getOwlOntology().getOWLOntologyManager().getOWLDataFactory().getOWLLiteral(String.valueOf(value), doubleType);
+		return doubleLiteral;
 	}
 }

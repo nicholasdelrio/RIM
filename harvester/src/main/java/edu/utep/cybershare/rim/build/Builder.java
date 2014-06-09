@@ -62,13 +62,15 @@ public abstract class Builder{
 		Institution institution = factory.createInstitution(uri);
 		institution.addHasCity(city);
 		institution.addHasState(state);
-		institution.addHasZipCode(Integer.decode(zipCode));		
+		institution.addHasZipCode(zipCode);
+		institution.addHasInstitutionName(name);
 		this.institutions.add(institution);
 	}
 	
 	public void buildHostingInstitution(String name){
 		String uri = inventory.getInstanceURI(name);
 		Institution institution = factory.createInstitution(uri);
+		institution.addHasInstitutionName(name);
 		this.hostingInstitution = institution;
 	}
 	
@@ -91,11 +93,13 @@ public abstract class Builder{
 		
 		//build project URI
 		String id = getProjectID(grantID, title);
+		
 		String uri = inventory.getInstanceURI(id);
 		
 		// create the new project 
-		Project project = factory.createProject(uri);
-		inventory.addToInventory(project);
+		Project project = factory.createProject(uri); 
+		
+		//inventory.addToInventory(project);
 		
 		//populate the project
 		populateProject(project, title, summary, startDate, endDate, awardAmount, grantID, awardHomepage);
@@ -130,7 +134,7 @@ public abstract class Builder{
 		project.addEndedAtDate(getOWLLiteral(endDate));
 		project.addWasAwardedAmount(awardAmount);
 		project.addIdentifiedByGrantID(grantID);
-		project.addHasProjectHomePage(awardHomepage);		
+		project.addHasProjectHomePage(awardHomepage.toString());		
 	}
 	
 	protected abstract void populateWithBuiltParts(Project aProject);

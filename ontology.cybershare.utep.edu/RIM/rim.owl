@@ -244,7 +244,7 @@
 
     <owl:DatatypeProperty rdf:about="http://ontology.cybershare.utep.edu/RIM/rim.owl#hasZipCode">
         <rdfs:domain rdf:resource="http://ontology.cybershare.utep.edu/RIM/rim.owl#Institution"/>
-        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 

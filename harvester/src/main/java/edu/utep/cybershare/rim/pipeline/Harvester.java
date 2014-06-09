@@ -62,9 +62,9 @@ public class Harvester {
 		//Pipeline harvestingPipeline = new Pipeline(nsfSourceFilter, vlcProjectsUploader);
 		
 		
-		harvestingPipeline.addFilter(deanaFilter);
+		//harvestingPipeline.addFilter(deanaFilter);
 		harvestingPipeline.addFilter(geocoderFilter);
-		harvestingPipeline.addFilter(collectionsFilter);
+		//harvestingPipeline.addFilter(collectionsFilter);
 		harvestingPipeline.addFilter(relationshipsFilter);
 		
 		harvestingPipeline.execute();

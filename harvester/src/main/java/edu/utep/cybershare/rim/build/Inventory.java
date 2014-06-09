@@ -9,6 +9,8 @@ import javax.management.openmbean.KeyAlreadyExistsException;
 import org.protege.owl.codegeneration.WrappedIndividual;
 import org.semanticweb.owlapi.model.OWLIndividual;
 
+import edu.utep.cybershare.rim.util.StringManipulation;
+
 public class Inventory {
 	
 	private HashSet<OWLIndividual> owlIndividuals;	
@@ -39,6 +41,6 @@ public class Inventory {
 	}
 	
 	public String getInstanceURI(String fragment){
-		return baseURI + fragment;
+		return StringManipulation.makeURICompliantFragment(fragment, baseURI);
 	}
 }
