@@ -1,7 +1,7 @@
 package edu.utep.cybershare.rim.build;
 
 public class FilePath {
-	   public static final String URI_PREFIX = "http://visko.cybershare.utep.edu/linked-data/rim/projects/";
+	   public static final String URI_PREFIX = "http://visko.cybershare.utep.edu/linked-data/rim/";
 	    public static final String BASE_URL = "http://ontology.cybershare.utep.edu/RIM/linked-data/";
 	    public static final String DOCUMENT_NAME = "projects.owl";
 	    public static final String DOCUMENT_URL = BASE_URL + DOCUMENT_NAME;

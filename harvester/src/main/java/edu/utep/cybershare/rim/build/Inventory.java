@@ -41,6 +41,6 @@ public class Inventory {
 	}
 	
 	public String getInstanceURI(String fragment){
-		return StringManipulation.makeURICompliantFragment(fragment, baseURI);
+		return baseURI + StringManipulation.makeURICompliantFragment(fragment, baseURI);
 	}
 }
