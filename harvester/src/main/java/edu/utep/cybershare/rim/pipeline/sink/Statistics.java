@@ -1,7 +1,7 @@
 package edu.utep.cybershare.rim.pipeline.sink;
 
 import edu.utep.cybershare.rim.ontology.Factory;
-import edu.utep.cybershare.vlc.pipeline.Pipeline.DumpFilter;
+import edu.utep.cybershare.rim.pipeline.Pipeline.DumpFilter;
 
 public class Statistics implements DumpFilter {
 

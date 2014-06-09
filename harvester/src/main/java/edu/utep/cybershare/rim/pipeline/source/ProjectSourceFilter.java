@@ -6,7 +6,7 @@ import edu.utep.cybershare.rim.build.NSFDirector;
 import edu.utep.cybershare.rim.build.source.NASAAwards;
 import edu.utep.cybershare.rim.build.source.NSFAwards;
 import edu.utep.cybershare.rim.ontology.Factory;
-import edu.utep.cybershare.vlc.pipeline.Pipeline.SourceFilter;
+import edu.utep.cybershare.rim.pipeline.Pipeline.SourceFilter;
 
 public class ProjectSourceFilter implements SourceFilter {
 	

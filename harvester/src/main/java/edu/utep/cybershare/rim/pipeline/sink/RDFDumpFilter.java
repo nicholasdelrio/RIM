@@ -6,7 +6,7 @@ import org.semanticweb.owlapi.io.FileDocumentTarget;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 import edu.utep.cybershare.rim.ontology.Factory;
-import edu.utep.cybershare.vlc.pipeline.Pipeline.DumpFilter;
+import edu.utep.cybershare.rim.pipeline.Pipeline.DumpFilter;
 
 public class RDFDumpFilter implements DumpFilter {
 

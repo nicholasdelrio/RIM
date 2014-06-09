@@ -10,13 +10,13 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 import edu.utep.cybershare.rim.build.FilePath;
 import edu.utep.cybershare.rim.build.Inventory;
 import edu.utep.cybershare.rim.ontology.Factory;
-import edu.utep.cybershare.vlc.pipeline.filter.CollectionsFilter;
-import edu.utep.cybershare.vlc.pipeline.filter.InstitutionGeocodeFilter;
-import edu.utep.cybershare.vlc.pipeline.filter.ProjectRelationshipsFilter;
-import edu.utep.cybershare.vlc.pipeline.filter.ProjectsFilter;
-import edu.utep.cybershare.vlc.pipeline.sink.RDFDumpFilter;
-import edu.utep.cybershare.vlc.pipeline.sink.VLCProjectsUploader;
-import edu.utep.cybershare.vlc.pipeline.source.ProjectSourceFilter;
+import edu.utep.cybershare.rim.pipeline.filter.CollectionsFilter;
+import edu.utep.cybershare.rim.pipeline.filter.InstitutionGeocodeFilter;
+import edu.utep.cybershare.rim.pipeline.filter.ProjectRelationshipsFilter;
+import edu.utep.cybershare.rim.pipeline.filter.ProjectsFilter;
+import edu.utep.cybershare.rim.pipeline.sink.RDFDumpFilter;
+import edu.utep.cybershare.rim.pipeline.sink.VLCProjectsUploader;
+import edu.utep.cybershare.rim.pipeline.source.ProjectSourceFilter;
 
 public class Harvester {
 

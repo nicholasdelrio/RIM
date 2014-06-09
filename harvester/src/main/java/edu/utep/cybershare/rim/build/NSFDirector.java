@@ -16,7 +16,7 @@ import org.w3c.dom.NodeList;
 
 import edu.utep.cybershare.rim.build.source.Awards;
 import edu.utep.cybershare.rim.build.source.NSFAwards;
-import edu.utep.cybershare.vlc.util.StringManipulation;
+import edu.utep.cybershare.rim.util.StringManipulation;
 
 public class NSFDirector {
 	

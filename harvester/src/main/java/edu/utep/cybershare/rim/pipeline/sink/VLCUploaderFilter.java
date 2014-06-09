@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import edu.utep.cybershare.rim.ontology.Factory;
 import edu.utep.cybershare.rim.ontology.Project;
-import edu.utep.cybershare.vlc.pipeline.Pipeline.DumpFilter;
+import edu.utep.cybershare.rim.pipeline.Pipeline.DumpFilter;
 
 public class VLCUploaderFilter implements DumpFilter {
 

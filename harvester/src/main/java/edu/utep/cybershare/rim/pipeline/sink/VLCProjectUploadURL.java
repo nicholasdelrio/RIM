@@ -3,7 +3,7 @@ package edu.utep.cybershare.rim.pipeline.sink;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.utep.cybershare.vlc.util.StringManipulation;
+import edu.utep.cybershare.rim.util.StringManipulation;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;

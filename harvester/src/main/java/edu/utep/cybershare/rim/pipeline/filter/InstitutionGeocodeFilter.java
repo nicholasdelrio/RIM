@@ -10,7 +10,7 @@ import java.util.List;
 import au.com.bytecode.opencsv.CSVReader;
 import edu.utep.cybershare.rim.ontology.Factory;
 import edu.utep.cybershare.rim.ontology.Institution;
-import edu.utep.cybershare.vlc.pipeline.Pipeline.Filter;
+import edu.utep.cybershare.rim.pipeline.Pipeline.Filter;
 
 public class InstitutionGeocodeFilter implements Filter {
 

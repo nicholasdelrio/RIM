@@ -9,7 +9,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import edu.utep.cybershare.vlc.util.StringManipulation;
+import edu.utep.cybershare.rim.util.StringManipulation;
 
 
 public class NASAProjectsDownloader {

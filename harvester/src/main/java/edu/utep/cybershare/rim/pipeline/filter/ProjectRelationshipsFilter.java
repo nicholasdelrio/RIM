@@ -5,7 +5,7 @@ import java.util.List;
 
 import edu.utep.cybershare.rim.ontology.Factory;
 import edu.utep.cybershare.rim.ontology.Project;
-import edu.utep.cybershare.vlc.pipeline.Pipeline.Filter;
+import edu.utep.cybershare.rim.pipeline.Pipeline.Filter;
 /**
  * Work in progress...may not be necessary
  * @author Nicholas Del Rio

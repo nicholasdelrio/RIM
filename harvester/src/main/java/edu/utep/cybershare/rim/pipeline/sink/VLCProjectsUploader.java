@@ -16,7 +16,7 @@ import org.apache.http.util.EntityUtils;
 import edu.utep.cybershare.rim.ontology.Factory;
 import edu.utep.cybershare.rim.ontology.Person;
 import edu.utep.cybershare.rim.ontology.Project;
-import edu.utep.cybershare.vlc.pipeline.Pipeline.DumpFilter;
+import edu.utep.cybershare.rim.pipeline.Pipeline.DumpFilter;
 
 public class VLCProjectsUploader implements DumpFilter  {
 	

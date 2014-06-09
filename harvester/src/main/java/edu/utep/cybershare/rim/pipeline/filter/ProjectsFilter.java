@@ -12,7 +12,7 @@ import edu.utep.cybershare.rim.ontology.Factory;
 import edu.utep.cybershare.rim.ontology.Person;
 import edu.utep.cybershare.rim.ontology.Project;
 import edu.utep.cybershare.rim.build.source.Awards;
-import edu.utep.cybershare.vlc.pipeline.Pipeline.Filter;
+import edu.utep.cybershare.rim.pipeline.Pipeline.Filter;
 
 public class ProjectsFilter implements Filter {
 	
