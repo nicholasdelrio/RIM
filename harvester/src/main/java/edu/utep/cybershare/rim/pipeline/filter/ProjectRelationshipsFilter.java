@@ -28,7 +28,7 @@ public class ProjectRelationshipsFilter implements Filter {
 			for(String aTitle : relatedProjectTitles){
 				for(Project anotherProject : (Collection<Project>)factory.getAllProjectInstances()){
 					if(aTitle.equals(anotherProject.getIdentifiedByTitle().iterator().next())){
-						aProject.addRelatedToResource(anotherProject);
+						aProject.addRelatedToProject(anotherProject);
 					}
 				}
 			}

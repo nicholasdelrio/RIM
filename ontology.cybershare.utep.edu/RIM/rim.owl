@@ -85,6 +85,15 @@
     
 
 
+    <!-- http://ontology.cybershare.utep.edu/RIM/rim.owl#relatedToProject -->
+
+    <owl:ObjectProperty rdf:about="http://ontology.cybershare.utep.edu/RIM/rim.owl#relatedToProject">
+        <rdfs:domain rdf:resource="http://ontology.cybershare.utep.edu/RIM/rim.owl#Project"/>
+        <rdfs:range rdf:resource="http://ontology.cybershare.utep.edu/RIM/rim.owl#Project"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://ontology.cybershare.utep.edu/RIM/rim.owl#relatedToResource -->
 
     <owl:ObjectProperty rdf:about="http://ontology.cybershare.utep.edu/RIM/rim.owl#relatedToResource"/>
@@ -125,6 +134,15 @@
     <owl:DatatypeProperty rdf:about="http://ontology.cybershare.utep.edu/RIM/rim.owl#hasAddress">
         <rdfs:domain rdf:resource="http://ontology.cybershare.utep.edu/RIM/rim.owl#Institution"/>
         <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontology.cybershare.utep.edu/RIM/rim.owl#hasAwardHomePage -->
+
+    <owl:DatatypeProperty rdf:about="http://ontology.cybershare.utep.edu/RIM/rim.owl#hasAwardHomePage">
+        <rdfs:domain rdf:resource="http://ontology.cybershare.utep.edu/RIM/rim.owl#Project"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
     </owl:DatatypeProperty>
     
 

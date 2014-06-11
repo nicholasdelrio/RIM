@@ -20,6 +20,7 @@ import edu.utep.cybershare.rim.ontology.Factory;
 import edu.utep.cybershare.rim.ontology.Institution;
 import edu.utep.cybershare.rim.ontology.Person;
 import edu.utep.cybershare.rim.ontology.Project;
+import edu.utep.cybershare.rim.util.StringManipulation;
 
 
 public abstract class Builder{
@@ -134,7 +135,7 @@ public abstract class Builder{
 		project.addEndedAtDate(getOWLLiteral(endDate));
 		project.addWasAwardedAmount(awardAmount);
 		project.addIdentifiedByGrantID(grantID);
-		project.addHasProjectHomePage(awardHomepage.toString());		
+		project.addHasAwardHomePage(awardHomepage.toString());		
 	}
 	
 	protected abstract void populateWithBuiltParts(Project aProject);
@@ -142,7 +143,15 @@ public abstract class Builder{
 	private Person getPerson(String firstName, String lastName, String email){		
 		String uri = inventory.getInstanceURI(lastName + "-" + firstName);
 		Person person = factory.createPerson(uri);
-
+		person.addHasFirstName(firstName);
+		person.addHasLastName(lastName);
+		
+		try{
+			String shaSum = StringManipulation.SHAsum(email.getBytes("UTF-8"));
+			person.addHasEmailSHA1Sum(shaSum);
+		}
+		catch(Exception e){/*do nothing, email is either null or corrupted and I can't do anything about that*/}
+		
 		//set email
 		return person;
 	}
