@@ -147,8 +147,13 @@ public class NSFDirector {
 		ArrayList<String> programs = new ArrayList<String>();
 		NodeList programElements = awardElement.getElementsByTagName("Program");
 
-		for(int i = 0; i < programElements.getLength(); i ++)
-			programs.add(programElements.item(i).getTextContent());
+		String programListing;
+		for(int i = 0; i < programElements.getLength(); i ++){
+			programListing = programElements.item(i).getTextContent();
+			
+			for(String programItem : programListing.split(","))
+				programs.add(programItem.trim());
+		}
 				
 		return programs;
 	}

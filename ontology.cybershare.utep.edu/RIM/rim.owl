@@ -111,6 +111,15 @@
     
 
 
+    <!-- http://ontology.cybershare.utep.edu/RIM/rim.owl#associatedWithAgencyProgram -->
+
+    <owl:DatatypeProperty rdf:about="http://ontology.cybershare.utep.edu/RIM/rim.owl#associatedWithAgencyProgram">
+        <rdfs:domain rdf:resource="http://ontology.cybershare.utep.edu/RIM/rim.owl#Project"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://ontology.cybershare.utep.edu/RIM/rim.owl#describedByAbstract -->
 
     <owl:DatatypeProperty rdf:about="http://ontology.cybershare.utep.edu/RIM/rim.owl#describedByAbstract">
