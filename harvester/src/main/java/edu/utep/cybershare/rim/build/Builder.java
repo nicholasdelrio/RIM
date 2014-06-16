@@ -46,7 +46,7 @@ public abstract class Builder{
 		reset();
 	}
 	
-	private void reset(){
+	protected void reset(){
 		coPrincipalInvestigators = new ArrayList<Person>();
 		institutions = new ArrayList<Institution>();
 		principalInvestigator = null;

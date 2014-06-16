@@ -2,6 +2,7 @@ package edu.utep.cybershare.rim.build;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
@@ -108,7 +109,10 @@ public class NSFDirector {
 		URL awardHomepage = NSFAwardsUtils.getAwardHomepageURL(grantID);
 		GregorianCalendar startDate = NSFAwardsUtils.getDate(startDateString);
 		GregorianCalendar endDate = NSFAwardsUtils.getDate(endDateString);
+		
+		List<String> programs = this.getProgram(awardElement);
 
+		builder.setPrograms(programs);
 		builder.buildProject(title, abstractText, startDate, endDate, awardAmount, grantID, awardHomepage);
 	}
 
@@ -138,13 +142,15 @@ public class NSFDirector {
 		return email;
 	}
 	
-	private String getProgram(Element awardElement){
-		String program = null;
-		NodeList programs = awardElement.getElementsByTagName("Program");
-		if(programs.getLength() > 0)
-			program = programs.item(0).getTextContent();
+	private List<String> getProgram(Element awardElement){
 		
-		return program;
+		ArrayList<String> programs = new ArrayList<String>();
+		NodeList programElements = awardElement.getElementsByTagName("Program");
+
+		for(int i = 0; i < programElements.getLength(); i ++)
+			programs.add(programElements.item(i).getTextContent());
+				
+		return programs;
 	}
 	
 	private String getPI(Element awardElement){

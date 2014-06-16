@@ -14,6 +14,7 @@ public class Relationships {
 	private Hashtable<String, String> projectTitleToRelatedProjectIDs;
 	private Hashtable<Integer,String> projectIDToProjectTitle;
 	private Hashtable<String, String> projectTitleToCollectionNames;
+	private Hashtable<String, String> projectTitleToSubjects;
 	
 	private static int semantic = 5;
 	private static int biodiversity = 6;
@@ -26,11 +27,10 @@ public class Relationships {
 	private static int waterSustainability = 13;
 	
 	public Relationships(File mappingsFile){
-		
-		
 		projectTitleToRelatedProjectIDs = new Hashtable<String,String>();
 		projectIDToProjectTitle = new Hashtable<Integer,String>();
 		projectTitleToCollectionNames = new Hashtable<String,String>();
+		projectTitleToSubjects = new Hashtable<String, String>();
 		
 		try{
 			CSVReader reader = new CSVReader(new FileReader(mappingsFile));	
@@ -47,9 +47,9 @@ public class Relationships {
 				relatedProjectIDs = aRecord[4].trim();
 				
 				setCollectionMapping(projectTitle, aRecord);
+				setSubjectMapping(projectTitle, aRecord);
 				
 				projectIDToProjectTitle.put(new Integer(i), projectTitle);
-
 				
 				if(relatedProjectIDs != null && !relatedProjectIDs.isEmpty())
 					projectTitleToRelatedProjectIDs.put(projectTitle, relatedProjectIDs);
@@ -57,6 +57,33 @@ public class Relationships {
 			reader.close();
 		}
 		catch(Exception e){e.printStackTrace();}
+	}
+	
+	private void setSubjectMapping(String projectTitle, String[] aRecord){
+		String subjects= "";
+		if(!aRecord[Relationships.arctic].isEmpty())
+			subjects += "arctic,";
+		if(!aRecord[Relationships.biodiversity].isEmpty())
+			subjects += "biodiversity,";
+		if(!aRecord[Relationships.diffusion].isEmpty())
+			subjects += "diffusion,";
+		if(!aRecord[Relationships.geospatial].isEmpty())
+			subjects += "geospatial,";
+		if(!aRecord[Relationships.infectionDisease].isEmpty())
+			subjects += "infectous disease,";
+		if(!aRecord[Relationships.semantic].isEmpty())
+			subjects += "semantic,";
+		if(!aRecord[Relationships.sensors].isEmpty())
+			subjects += "sensors,";
+		if(!aRecord[Relationships.workflows].isEmpty())
+			subjects += "workflows,";
+		if(!aRecord[Relationships.waterSustainability].isEmpty())
+			subjects += "water sustainablility,";
+		
+		if(!subjects.isEmpty()){
+			subjects = subjects.substring(0, subjects.lastIndexOf(","));
+			projectTitleToSubjects.put(projectTitle, subjects);
+		}
 	}
 	
 	private void setCollectionMapping(String projectTitle, String[] aRecord){
@@ -84,6 +111,20 @@ public class Relationships {
 			collections = collections.substring(0, collections.lastIndexOf(","));
 			projectTitleToCollectionNames.put(projectTitle, collections);
 		}
+	}
+	
+	public List<String> getParentSubjects(Project aProject){
+		String projectTitle = aProject.getIdentifiedByTitle().iterator().next();
+		String subjectsList = projectTitleToSubjects.get(projectTitle);
+		ArrayList<String> subjects = new ArrayList<String>();
+		
+		if(subjectsList != null){
+			for(String subject : subjectsList.split(",")){
+				subjects.add(subject);
+			}
+		}
+		
+		return subjects;
 	}
 	
 	public List<String> getParentCollections(Project aProject){
