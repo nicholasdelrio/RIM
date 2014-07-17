@@ -35,3 +35,7 @@
    conversion:dataset_identifier "awards";
    foaf:page <http://www.nsf.gov/awardsearch/>;
 .
+
+<http://visko.cybershare.utep.edu/linked-data/source/nsf-gov/dataset/awards>
+   foaf:page <http://www.nsf.gov/awardsearch/download.jsp>;
+.
