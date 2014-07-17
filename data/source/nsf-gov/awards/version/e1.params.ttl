@@ -1,0 +1,622 @@
+@prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix todo:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:           <http://www.w3.org/2002/07/owl#> .
+@prefix vann:          <http://purl.org/vocab/vann/> .
+@prefix skos:          <http://www.w3.org/2004/02/skos/core#> .
+@prefix time:          <http://www.w3.org/2006/time#> .
+@prefix wgs:           <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geonames:      <http://www.geonames.org/ontology#> .
+@prefix geonamesid:    <http://sws.geonames.org/> .
+@prefix govtrackusgov: <http://www.rdfabout.com/rdf/usgov/geo/us/> .
+@prefix dbpedia:       <http://dbpedia.org/resource/> .
+@prefix dbpediaprop:   <http://dbpedia.org/property/> .
+@prefix dbpediaowl:    <http://dbpedia.org/ontology/> .
+@prefix con:           <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix muo:           <http://purl.oclc.org/NET/muo/muo#> .
+@prefix vs:            <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix frbr:          <http://purl.org/vocab/frbr/core#> .
+@prefix bibo:          <http://purl.org/ontology/bibo/> .
+@prefix prov:          <http://www.w3.org/ns/prov#> .
+@prefix doap:          <http://usefulinc.com/ns/doap#> .
+@prefix nfo:           <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix sio:           <http://semanticscience.org/resource/> .
+@prefix org:           <http://www.w3.org/ns/org#> .
+@prefix vsr:           <http://purl.org/twc/vocab/vsr#> .
+@prefix dcat:          <http://www.w3.org/ns/dcat#> .
+@prefix qb:            <http://purl.org/linked-data/cube#> .
+@prefix pml:           <http://provenanceweb.org/ns/pml#> .
+@prefix dgtwc:         <http://data-gov.tw.rpi.edu/2009/data-gov-twc.rdf#> .
+@prefix dcterms:       <http://purl.org/dc/terms/> .
+@prefix void:          <http://rdfs.org/ns/void#> .
+@prefix scovo:         <http://purl.org/NET/scovo#> .
+@prefix sioc:          <http://rdfs.org/sioc/ns#> .
+@prefix foaf:          <http://xmlns.com/foaf/0.1/> .
+@prefix ov:            <http://open.vocab.org/terms/> .
+@prefix conversion:    <http://purl.org/twc/vocab/conversion/> .
+@prefix :              <http://visko.cybershare.utep.edu/linked-data/source/nsf-gov/dataset/awards/version/2013-06/params/enhancement/1/> .
+
+
+#:a_bundle
+#   a conversion:ImplicitBundle;
+#   conversion:property_name "a_property"; # Can also be a URI, e.g. dcterms:title.
+#   conversion:name_template "[/sd]company/[#2]/[r]";
+#   #conversion:type_name     "My Class";   # Can also be a URI, e.g. foaf:Person.
+#.
+
+<http://visko.cybershare.utep.edu/linked-data/source/nsf-gov/dataset/awards/version/2013-06/conversion/enhancement/1>
+   a conversion:LayerDataset, void:Dataset;
+
+   conversion:base_uri           "http://visko.cybershare.utep.edu/linked-data"^^xsd:anyURI;
+   conversion:source_identifier  "nsf-gov";
+   conversion:dataset_identifier "awards";
+   conversion:version_identifier "2013-06";
+   conversion:enhancement_identifier "1";
+
+   conversion:conversion_process [
+      a conversion:EnhancementConversionProcess;
+      conversion:enhancement_identifier "1";
+      #conversion:subject_discriminator  "water-sustainability.xml";
+
+      dcterms:creator [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+      dcterms:created "2014-07-17T15:52:04-04:00"^^xsd:dateTime;
+
+
+      #conversion:enhance [
+      #   ov:csvRow 2;
+      #   a conversion:DataStartRow;
+      #];
+
+      conversion:delimits_cell ",";
+      #conversion:delimits_cell "	"; # tab
+      #conversion:delimits_cell "|";   # pipe
+      #conversion:delimits_cell ",";   # comma
+
+      #conversion:interpret [
+      #   conversion:symbol        "";
+      #   conversion:interpretation conversion:null; 
+      #];
+      conversion:enhance [
+         conversion:domain_template "[/sd][#3]";
+         conversion:domain_name     "Award";
+      ];
+      conversion:enhance [
+         conversion:class_name "Award";
+         conversion:subclass_of <http://www.ontotext.com/proton/protonext#Award>, foaf:Project;
+      ];
+      conversion:enhance [
+         ov:csvCol          1;
+         ov:csvHeader       "table";
+         a conversion:Omitted;
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "table";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          2;
+         ov:csvHeader       "row";
+         a conversion:Omitted;
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "row";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          3;
+         ov:csvHeader       "AwardNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:label   "Award Number";
+         #conversion:equivalent_property <http://visko.cybershare.utep.edu/linked-data/source/nsf-gov/dataset/awards/vocab/award_number>;
+         conversion:equivalent_property "[/sd]vocab/award_number";
+         conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         conversion:range   rdfs:Literal;
+      ];
+      conversion:enhance [
+         ov:csvCol          4;
+         ov:csvHeader       "Title";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Title";
+         conversion:equivalent_property dcterms:title;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         conversion:range   rdfs:Literal;
+      ];
+      conversion:enhance [
+         ov:csvCol          5;
+         ov:csvHeader       "NsfOrganization";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "NsfOrganization";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          6;
+         ov:csvHeader       "Program";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Program";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          7;
+         ov:csvHeader       "Program";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Program";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          8;
+         ov:csvHeader       "Program";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Program";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          9;
+         ov:csvHeader       "Program";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Program";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          10;
+         ov:csvHeader       "Program";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Program";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          11;
+         ov:csvHeader       "StartDate";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "StartDate";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          12;
+         ov:csvHeader       "LastAmendmentDate";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "LastAmendmentDate";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          13;
+         ov:csvHeader       "PrincipalInvestigator";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PrincipalInvestigator";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          14;
+         ov:csvHeader       "PIEmailAddress";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PIEmailAddress";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          15;
+         ov:csvHeader       "Co-PIName";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Co-PIName";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          16;
+         ov:csvHeader       "Co-PIName";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Co-PIName";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          17;
+         ov:csvHeader       "Co-PIName";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Co-PIName";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          18;
+         ov:csvHeader       "Co-PIName";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Co-PIName";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          19;
+         ov:csvHeader       "State";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "State";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          20;
+         ov:csvHeader       "Organization";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Organization";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          21;
+         ov:csvHeader       "AwardInstrument";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "AwardInstrument";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          22;
+         ov:csvHeader       "ProgramManager";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramManager";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          23;
+         ov:csvHeader       "ExpirationDate";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ExpirationDate";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          24;
+         ov:csvHeader       "AwardedAmountToDate";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "AwardedAmountToDate";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          25;
+         ov:csvHeader       "ARRAAmount";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ARRAAmount";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          26;
+         ov:csvHeader       "OrganizationStreet";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "OrganizationStreet";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          27;
+         ov:csvHeader       "OrganizationCity";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "OrganizationCity";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          28;
+         ov:csvHeader       "OrganizationState";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "OrganizationState";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          29;
+         ov:csvHeader       "OrganizationZip";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "OrganizationZip";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          30;
+         ov:csvHeader       "OrganizationPhone";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "OrganizationPhone";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          31;
+         ov:csvHeader       "NSFDirectorate";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "NSFDirectorate";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          32;
+         ov:csvHeader       "ProgramElementCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramElementCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          33;
+         ov:csvHeader       "ProgramElementCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramElementCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          34;
+         ov:csvHeader       "ProgramElementCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramElementCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          35;
+         ov:csvHeader       "ProgramElementCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramElementCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          36;
+         ov:csvHeader       "ProgramElementCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramElementCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          37;
+         ov:csvHeader       "ProgramReferenceCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramReferenceCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          38;
+         ov:csvHeader       "ProgramReferenceCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramReferenceCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          39;
+         ov:csvHeader       "ProgramReferenceCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramReferenceCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          40;
+         ov:csvHeader       "ProgramReferenceCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramReferenceCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          41;
+         ov:csvHeader       "ProgramReferenceCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramReferenceCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          42;
+         ov:csvHeader       "ProgramReferenceCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramReferenceCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          43;
+         ov:csvHeader       "ProgramReferenceCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ProgramReferenceCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          44;
+         ov:csvHeader       "Abstract";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Abstract";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      #conversion:enhance [
+      #   ov:csvRow 3,4,5;
+      #   conversion:fromRow 3;
+      #   conversion:toRow   5;
+      #   a conversion:ExampleResource;
+      #];
+   ];
+.
