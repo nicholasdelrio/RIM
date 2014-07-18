@@ -24,7 +24,7 @@
 #
 
 mkdir -p automatic
-for download in `find www.nsf.gov/awardsearch -name 'download?DownloadFileName=*'`; do
+for download in `find source/www.nsf.gov/awardsearch -name 'download?DownloadFileName=*'`; do
    echo $download
    year=`echo $download | sed 's/^.*DownloadFileName=//;s/\&All=.*$//'`
    echo ln "$download" automatic/$year.zip
