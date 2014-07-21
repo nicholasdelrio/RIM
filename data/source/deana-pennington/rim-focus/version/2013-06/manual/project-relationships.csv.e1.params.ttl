@@ -263,6 +263,10 @@
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "water sustainability"; 
+	      ];
          #conversion:range_template  "[/sd]thing[.]";
          #conversion:range_name  "Thing";
       ];

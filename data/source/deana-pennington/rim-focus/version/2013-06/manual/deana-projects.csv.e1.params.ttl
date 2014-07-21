@@ -92,8 +92,8 @@
          conversion:equivalent_property foaf:topic_interest;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         conversion:range_template  "[/sd][+]";
-         conversion:range   foaf:Project;
+         conversion:range_template  "[/]nsf-gov/awards/[+]";
+         conversion:range   rdfs:Resource;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
