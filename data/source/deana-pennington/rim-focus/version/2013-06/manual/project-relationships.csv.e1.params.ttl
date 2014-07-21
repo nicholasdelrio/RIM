@@ -1,0 +1,276 @@
+@prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix todo:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:           <http://www.w3.org/2002/07/owl#> .
+@prefix vann:          <http://purl.org/vocab/vann/> .
+@prefix skos:          <http://www.w3.org/2004/02/skos/core#> .
+@prefix time:          <http://www.w3.org/2006/time#> .
+@prefix wgs:           <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geonames:      <http://www.geonames.org/ontology#> .
+@prefix geonamesid:    <http://sws.geonames.org/> .
+@prefix govtrackusgov: <http://www.rdfabout.com/rdf/usgov/geo/us/> .
+@prefix dbpedia:       <http://dbpedia.org/resource/> .
+@prefix dbpediaprop:   <http://dbpedia.org/property/> .
+@prefix dbpediaowl:    <http://dbpedia.org/ontology/> .
+@prefix con:           <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix muo:           <http://purl.oclc.org/NET/muo/muo#> .
+@prefix vs:            <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix frbr:          <http://purl.org/vocab/frbr/core#> .
+@prefix bibo:          <http://purl.org/ontology/bibo/> .
+@prefix prov:          <http://www.w3.org/ns/prov#> .
+@prefix doap:          <http://usefulinc.com/ns/doap#> .
+@prefix nfo:           <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix sio:           <http://semanticscience.org/resource/> .
+@prefix org:           <http://www.w3.org/ns/org#> .
+@prefix vsr:           <http://purl.org/twc/vocab/vsr#> .
+@prefix dcat:          <http://www.w3.org/ns/dcat#> .
+@prefix qb:            <http://purl.org/linked-data/cube#> .
+@prefix pml:           <http://provenanceweb.org/ns/pml#> .
+@prefix dgtwc:         <http://data-gov.tw.rpi.edu/2009/data-gov-twc.rdf#> .
+@prefix dcterms:       <http://purl.org/dc/terms/> .
+@prefix void:          <http://rdfs.org/ns/void#> .
+@prefix scovo:         <http://purl.org/NET/scovo#> .
+@prefix sioc:          <http://rdfs.org/sioc/ns#> .
+@prefix foaf:          <http://xmlns.com/foaf/0.1/> .
+@prefix ov:            <http://open.vocab.org/terms/> .
+@prefix conversion:    <http://purl.org/twc/vocab/conversion/> .
+@prefix :              <http://visko.cybershare.utep.edu/linked-data/source/deana-pennington/dataset/rim-focus/version/2013-06/params/enhancement/1/> .
+
+
+#:a_bundle
+#   a conversion:ImplicitBundle;
+#   conversion:property_name "a_property"; # Can also be a URI, e.g. dcterms:title.
+#   conversion:name_template "[/sd]company/[#2]/[r]";
+#   #conversion:type_name     "My Class";   # Can also be a URI, e.g. foaf:Person.
+#.
+
+<http://visko.cybershare.utep.edu/linked-data/source/deana-pennington/dataset/rim-focus/version/2013-06/conversion/enhancement/1>
+   a conversion:LayerDataset, void:Dataset;
+
+   conversion:base_uri           "http://visko.cybershare.utep.edu/linked-data"^^xsd:anyURI;
+   conversion:source_identifier  "deana-pennington";
+   conversion:dataset_identifier "rim-focus";
+   conversion:version_identifier "2013-06";
+   conversion:enhancement_identifier "1";
+
+   conversion:conversion_process [
+      a conversion:EnhancementConversionProcess;
+      conversion:enhancement_identifier "1";
+      conversion:subject_discriminator  "project-relationships";
+
+      dcterms:creator [ a foaf:OnlineAccount; foaf:accountName "nick" ];
+      dcterms:created "2014-07-21T13:26:18-04:00"^^xsd:dateTime;
+
+
+      #conversion:enhance [
+      #   ov:csvRow 2;
+      #   a conversion:DataStartRow;
+      #];
+
+      conversion:delimits_cell ",";
+      #conversion:delimits_cell "	"; # tab
+      #conversion:delimits_cell "|";   # pipe
+      #conversion:delimits_cell ",";   # comma
+
+      conversion:interpret [
+         conversion:symbol        "";
+         conversion:interpretation conversion:null; 
+      ];
+      conversion:enhance [
+         conversion:domain_template "[/sdv]award/[#1]";
+         conversion:domain_name     "Award";
+      ];
+      #conversion:enhance [
+      #   conversion:class_name "Thing";
+      #   conversion:subclass_of <http://purl.org/...>;
+      #];
+      conversion:enhance [
+         ov:csvCol          1;
+         ov:csvHeader       "Code";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Code";
+         #conversion:equivalent_property dcterms:identifier;
+         conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          2;
+         ov:csvHeader       "Project Title";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Project Title";
+         conversion:equivalent_property dcterms:title;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[.]";
+         conversion:range   rdfs:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         a conversion:Omitted;
+	 ov:csvCol          3;
+         ov:csvHeader       "Principal Investigator";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Principal Investigator";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+	 a conversion:Omitted;
+         ov:csvCol          4;
+         ov:csvHeader       "Co-Principal Investigators";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Co-Principal Investigators";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          5;
+         ov:csvHeader       "Related to Project";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Related to Project";
+         conversion:equivalent_property dcterms:relation;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         conversion:range_template "[/sdv]award/[.]" ;
+         conversion:range  rdfs:Resource;
+         conversion:range_name "Award"; 
+	 conversion:delimits_object ",\\s*";
+      ];
+      conversion:enhance [
+         conversion:class_name "Award";
+         conversion:subclass_of "[/]source/nsf-gov/dataset/awards/vocab/Award";
+      ];
+      conversion:enhance [
+         conversion:fromCol        6;
+         conversion:toCol        14;
+         conversion:equivalent_property dcterms:subject;
+         conversion:range_template  "[/sd]topic/[.]";
+         conversion:range   rdfs:Resource;
+      ];
+      conversion:enhance [
+         ov:csvCol          6;
+         ov:csvHeader       "semantics";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "semantics";
+         conversion:equivalent_property dcterms:relation;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "semantics"; 
+	      ];
+         conversion:range_template  "[/sd]topic/[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          7;
+         ov:csvHeader       "biodiversity";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "biodiversity";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "biodiversity"; 
+	      ];
+         #conversion:range_template  "[/sd]thing[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          8;
+         ov:csvHeader       "infectious disease";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "infectious disease";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          9;
+         ov:csvHeader       "arctic";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "arctic";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          10;
+         ov:csvHeader       "workflows";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "workflows";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          11;
+         ov:csvHeader       "diffusion";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "diffusion";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          12;
+         ov:csvHeader       "geospatial";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "geospatial";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          13;
+         ov:csvHeader       "sensors";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "sensors";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          14;
+         ov:csvHeader       "water sustainabilitly";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "water sustainabilitly";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvRow 14,18;
+         #conversion:fromRow 3;
+         #conversion:toRow   5;
+         a conversion:ExampleResource;
+      ];
+   ];
+.

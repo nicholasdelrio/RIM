@@ -35,32 +35,32 @@
 @prefix foaf:          <http://xmlns.com/foaf/0.1/> .
 @prefix ov:            <http://open.vocab.org/terms/> .
 @prefix conversion:    <http://purl.org/twc/vocab/conversion/> .
-@prefix frapo:         <http://purl.org/cerif/frapo/>
-@prefix :              <http://visko.cybershare.utep.edu/linked-data/source/nsf-gov/dataset/awards/version/2013-06/params/enhancement/1/> .
+@prefix :              <http://visko.cybershare.utep.edu/linked-data/source/deana-pennington/dataset/rim-focus/version/2013-06/params/enhancement/1/> .
 
-:address_bundle
-   a conversion:ImplicitBundle;
-   conversion:property_name foaf:based_near;
-   conversion:name_template "[/sd][#3]/address";
-   conversion:type_name    con:Address; 
-.
 
-<http://visko.cybershare.utep.edu/linked-data/source/nsf-gov/dataset/awards/version/2013-06/conversion/enhancement/1>
+#:a_bundle
+#   a conversion:ImplicitBundle;
+#   conversion:property_name "a_property"; # Can also be a URI, e.g. dcterms:title.
+#   conversion:name_template "[/sd]company/[#2]/[r]";
+#   #conversion:type_name     "My Class";   # Can also be a URI, e.g. foaf:Person.
+#.
+
+<http://visko.cybershare.utep.edu/linked-data/source/deana-pennington/dataset/rim-focus/version/2013-06/conversion/enhancement/1>
    a conversion:LayerDataset, void:Dataset;
 
    conversion:base_uri           "http://visko.cybershare.utep.edu/linked-data"^^xsd:anyURI;
-   conversion:source_identifier  "nsf-gov";
-   conversion:dataset_identifier "awards";
+   conversion:source_identifier  "deana-pennington";
+   conversion:dataset_identifier "rim-focus";
    conversion:version_identifier "2013-06";
    conversion:enhancement_identifier "1";
 
    conversion:conversion_process [
       a conversion:EnhancementConversionProcess;
       conversion:enhancement_identifier "1";
-      #conversion:subject_discriminator  "water-sustainability.xml";
+      conversion:subject_discriminator  "water-sustainability-projects";
 
-      dcterms:creator [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
-      dcterms:created "2014-07-17T15:52:04-04:00"^^xsd:dateTime;
+      dcterms:creator [ a foaf:OnlineAccount; foaf:accountName "nick" ];
+      dcterms:created "2014-07-21T13:26:22-04:00"^^xsd:dateTime;
 
 
       #conversion:enhance [
@@ -77,20 +77,19 @@
       #   conversion:symbol        "";
       #   conversion:interpretation conversion:null; 
       #];
-      conversion:enhance [
-         conversion:domain_template "[/sd][#3]";
-         conversion:domain_name     "Award";
-      ];
-      conversion:enhance [
-         conversion:class_name "Award";
-         conversion:subclass_of <http://www.ontotext.com/proton/protonext#Award>, foaf:Project;
-      ];
+      #conversion:enhance [
+      #   conversion:domain_template "thing_[r]";
+      #   conversion:domain_name     "Thing";
+      #];
+      #conversion:enhance [
+      #   conversion:class_name "Thing";
+      #   conversion:subclass_of <http://purl.org/...>;
+      #];
       conversion:enhance [
          ov:csvCol          1;
-         ov:csvHeader       "table";
-         a conversion:Omitted;
+         ov:csvHeader       "AwardNumber";
          #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "table";
+         #conversion:label   "AwardNumber";
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
@@ -100,10 +99,9 @@
       ];
       conversion:enhance [
          ov:csvCol          2;
-         ov:csvHeader       "row";
-         a conversion:Omitted;
+         ov:csvHeader       "Title";
          #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "row";
+         #conversion:label   "Title";
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
@@ -113,100 +111,30 @@
       ];
       conversion:enhance [
          ov:csvCol          3;
-         ov:csvHeader       "AwardNumber";
+         ov:csvHeader       "NSFOrganization";
          #conversion:bundled_by [ ov:csvCol 1 ];
-         conversion:label   "Award Number";
-         #conversion:equivalent_property <http://visko.cybershare.utep.edu/linked-data/source/nsf-gov/dataset/awards/vocab/award_number>;
-         conversion:equivalent_property "[/sd]vocab/award_number";
-         conversion:subproperty_of      dcterms:identifier;
+         #conversion:label   "NSFOrganization";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         conversion:range   rdfs:Literal;
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
       ];
       conversion:enhance [
          ov:csvCol          4;
-         ov:csvHeader       "Title";
+         ov:csvHeader       "Program(s)";
          #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Title";
-         conversion:equivalent_property dcterms:title;
+         #conversion:label   "Program(s)";
+         #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         conversion:range   rdfs:Literal;
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
       ];
       conversion:enhance [
          ov:csvCol          5;
-         ov:csvHeader       "NsfOrganization";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         conversion:label   "NsfOrganization";
-         conversion:equivalent_property foaf:fundedBy;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         conversion:range_template  "http://www.nsf.gov/div/index.jsp?div=[.]";
-         conversion:range   foaf:Organization;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          6;
-         ov:csvHeader       "Program";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Program";
-         #conversion:equivalent_property dcterms:identifier;
-         conversion:subproperty_of      dcterms:identifier, ;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   foaf:Organization;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          7;
-
-         ov:csvHeader       "Program";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Program";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          8;
-         ov:csvHeader       "Program";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Program";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          9;
-         ov:csvHeader       "Program";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Program";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          10;
-         ov:csvHeader       "Program";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Program";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          11;
          ov:csvHeader       "StartDate";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "StartDate";
@@ -218,7 +146,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          12;
+         ov:csvCol          6;
          ov:csvHeader       "LastAmendmentDate";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "LastAmendmentDate";
@@ -230,79 +158,19 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          13;
+         ov:csvCol          7;
          ov:csvHeader       "PrincipalInvestigator";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "PrincipalInvestigator";
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         conversion:range_template  "[/sd]person/[_._]/[#3]";
-         conversion:range   foaf:Person;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          14;
-         ov:csvHeader       "PIEmailAddress";
-         conversion:bundled_by [ ov:csvCol 13 ];
-         #conversion:label   "PIEmailAddress";
-         #conversion:equivalent_property foaf:mbox;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   owl:Thing;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          15;
-         ov:csvHeader       "Co-PIName";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Co-PIName";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
          #conversion:range_template  "[/sd]thing[.]";
          conversion:range   todo:Literal;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          16;
-         ov:csvHeader       "Co-PIName";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Co-PIName";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          17;
-         ov:csvHeader       "Co-PIName";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Co-PIName";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          18;
-         ov:csvHeader       "Co-PIName";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "Co-PIName";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          19;
+         ov:csvCol          8;
          ov:csvHeader       "State";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "State";
@@ -314,11 +182,11 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          20;
+         ov:csvCol          9;
          ov:csvHeader       "Organization";
-         conversion:bundled_by [ ov:csvCol 13 ];
+         #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "Organization";
-         conversion:equivalent_property org:hasMember;
+         #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
          #conversion:range_template  "[/sd]thing[.]";
@@ -326,7 +194,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          21;
+         ov:csvCol          10;
          ov:csvHeader       "AwardInstrument";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "AwardInstrument";
@@ -338,7 +206,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          22;
+         ov:csvCol          11;
          ov:csvHeader       "ProgramManager";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "ProgramManager";
@@ -350,7 +218,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          23;
+         ov:csvCol          12;
          ov:csvHeader       "ExpirationDate";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "ExpirationDate";
@@ -362,7 +230,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          24;
+         ov:csvCol          13;
          ov:csvHeader       "AwardedAmountToDate";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "AwardedAmountToDate";
@@ -374,10 +242,10 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          25;
-         ov:csvHeader       "ARRAAmount";
+         ov:csvCol          14;
+         ov:csvHeader       "Co-PIName(s)";
          #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ARRAAmount";
+         #conversion:label   "Co-PIName(s)";
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
@@ -386,11 +254,23 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          26;
+         ov:csvCol          15;
+         ov:csvHeader       "PIEmailAddress";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PIEmailAddress";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          16;
          ov:csvHeader       "OrganizationStreet";
-         conversion:bundled_by [ ov:csvCol 20 ];
+         #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "OrganizationStreet";
-         conversion:equivalent_property con:street;
+         #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
          #conversion:range_template  "[/sd]thing[.]";
@@ -398,11 +278,11 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          27;
+         ov:csvCol          17;
          ov:csvHeader       "OrganizationCity";
-         #conversion:bundled_by [ ov:csvCol 20 ];
+         #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "OrganizationCity";
-         conversion:equivalent_property con:city;
+         #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
          #conversion:range_template  "[/sd]thing[.]";
@@ -410,20 +290,19 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          28;
+         ov:csvCol          18;
          ov:csvHeader       "OrganizationState";
-         conversion:bundled_by [ ov:csvCol 20 ];
+         #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "OrganizationState";
-         conversion:equivalent_property con:stateOrProvince;
+         #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
          #conversion:range_template  "[/sd]thing[.]";
          conversion:range   todo:Literal;
          #conversion:range_name  "Thing";
-         #conversion:links_via <some rdf to lookup>
       ];
       conversion:enhance [
-         ov:csvCol          29;
+         ov:csvCol          19;
          ov:csvHeader       "OrganizationZip";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "OrganizationZip";
@@ -435,7 +314,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          30;
+         ov:csvCol          20;
          ov:csvHeader       "OrganizationPhone";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "OrganizationPhone";
@@ -447,7 +326,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          31;
+         ov:csvCol          21;
          ov:csvHeader       "NSFDirectorate";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "NSFDirectorate";
@@ -459,10 +338,10 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          32;
-         ov:csvHeader       "ProgramElementCode";
+         ov:csvCol          22;
+         ov:csvHeader       "ProgramElementCode(s)";
          #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramElementCode";
+         #conversion:label   "ProgramElementCode(s)";
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
@@ -471,10 +350,10 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          33;
-         ov:csvHeader       "ProgramElementCode";
+         ov:csvCol          23;
+         ov:csvHeader       "ProgramReferenceCode(s)";
          #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramElementCode";
+         #conversion:label   "ProgramReferenceCode(s)";
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
@@ -483,10 +362,10 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          34;
-         ov:csvHeader       "ProgramElementCode";
+         ov:csvCol          24;
+         ov:csvHeader       "ARRAAmount";
          #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramElementCode";
+         #conversion:label   "ARRAAmount";
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
@@ -495,115 +374,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          35;
-         ov:csvHeader       "ProgramElementCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramElementCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          36;
-         ov:csvHeader       "ProgramElementCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramElementCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          37;
-         ov:csvHeader       "ProgramReferenceCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramReferenceCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          38;
-         ov:csvHeader       "ProgramReferenceCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramReferenceCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          39;
-         ov:csvHeader       "ProgramReferenceCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramReferenceCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          40;
-         ov:csvHeader       "ProgramReferenceCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramReferenceCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          41;
-         ov:csvHeader       "ProgramReferenceCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramReferenceCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          42;
-         ov:csvHeader       "ProgramReferenceCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramReferenceCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          43;
-         ov:csvHeader       "ProgramReferenceCode";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "ProgramReferenceCode";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
-         conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
-      ];
-      conversion:enhance [
-         ov:csvCol          44;
+         ov:csvCol          25;
          ov:csvHeader       "Abstract";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "Abstract";
