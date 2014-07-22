@@ -164,7 +164,7 @@
          ov:csvHeader       "semantics";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "semantics";
-         conversion:equivalent_property dcterms:relation;
+         #conversion:equivalent_property dcterms:relation;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
 	      conversion:interpret [
@@ -197,6 +197,10 @@
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "infectious disease"; 
+	      ];
          #conversion:range_template  "[/sd]thing[.]";
          #conversion:range_name  "Thing";
       ];
@@ -208,6 +212,10 @@
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "arctic";
+              ] 
          #conversion:range_template  "[/sd]thing[.]";
          #conversion:range_name  "Thing";
       ];
@@ -219,6 +227,10 @@
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "workflows";
+              ] 
          #conversion:range_template  "[/sd]thing[.]";
          #conversion:range_name  "Thing";
       ];
@@ -230,6 +242,10 @@
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "diffusion";
+              ] 
          #conversion:range_template  "[/sd]thing[.]";
          #conversion:range_name  "Thing";
       ];
@@ -241,6 +257,10 @@
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "geospatial";
+              ] 
          #conversion:range_template  "[/sd]thing[.]";
          #conversion:range_name  "Thing";
       ];
@@ -252,6 +272,10 @@
          #conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
+	      conversion:interpret [
+		 conversion:symbol        "x";
+		 conversion:interpretation "sensors";
+              ] 
          #conversion:range_template  "[/sd]thing[.]";
          #conversion:range_name  "Thing";
       ];
