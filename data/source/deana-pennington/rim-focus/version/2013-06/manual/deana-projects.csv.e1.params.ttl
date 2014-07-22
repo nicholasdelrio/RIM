@@ -77,7 +77,7 @@
       #   conversion:interpretation conversion:null; 
       #];
       conversion:enhance [
-         conversion:domain_template <http://visko.cybershare.utep.edu/linked-data/source/deana-pennington>;
+         conversion:domain_template "[/s]";
          conversion:domain_name    "[/sd]vocab/Person"; 
       ];
       conversion:enhance [

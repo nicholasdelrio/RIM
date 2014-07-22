@@ -120,7 +120,7 @@ export CSV2RDF4LOD_BASE_URI="http://visko.cybershare.utep.edu/linked-data"
 #
 # a conversion:ActivityLevelEnvironmentVariable
 export CSV2RDF4LOD_BASE_URI_OVERRIDE="http://tw2.tw.rpi.edu"
-export CSV2RDF4LOD_BASE_URI_OVERRIDE=""
+export CSV2RDF4LOD_BASE_URI_OVERRIDE="http://localhost:8888"
 
 #
 # Customize: Inspect the files (with DROID) and record 
@@ -175,7 +175,7 @@ export CSV2RDF4LOD_CONVERT_PERSON_URI=""
 #  https://github.com/timrdf/csv2rdf4lod-automation/blob/master/bin/util/virtuoso/vload)
 #
 export CSV2RDF4LOD_CONVERT_DATA_ROOT="/projects/lobd/data/source"
-export CSV2RDF4LOD_CONVERT_DATA_ROOT=""
+export CSV2RDF4LOD_CONVERT_DATA_ROOT="/Users/nick/Documents/utep/git-repos/rim/data/source"
 
 #
 # Customize: 'git pull' the converter repository every time 
@@ -198,8 +198,8 @@ export CSV2RDF4LOD_CONVERT_ALWAYS_UPDATE_CONVERTER="false"
 #
 # a conversion:ProjectLevelEnvironmentVariable
 # a conversion:ActivityLevelEnvironmentVariable
-export CSV2RDF4LOD_CONVERT_OMIT_RAW_LAYER="true"
 export CSV2RDF4LOD_CONVERT_OMIT_RAW_LAYER="false"
+export CSV2RDF4LOD_CONVERT_OMIT_RAW_LAYER="true"
 
 #
 # Customize: Number of rows to include in an example subset.
@@ -352,7 +352,7 @@ export CSV2RDF4LOD_PUBLISH="true"
 # (done in )
 #
 export CSV2RDF4LOD_PUBLISH_VC_REPOSITORY="https://github.com/timrdf/ieeevis.git"
-export CSV2RDF4LOD_PUBLISH_VC_REPOSITORY=""
+export CSV2RDF4LOD_PUBLISH_VC_REPOSITORY="https://github.com/nicholasdelrio/rim.git"
 
 
 #
@@ -397,7 +397,7 @@ export CSV2RDF4LOD_PUBLISH_PURGE_AUTODIR="false"
 # (done in cr-publish-void-to-endpoint.sh)
 #
 export CSV2RDF4LOD_PUBLISH_OUR_SOURCE_ID="twc-rpi-edu"
-export CSV2RDF4LOD_PUBLISH_OUR_SOURCE_ID=""
+export CSV2RDF4LOD_PUBLISH_OUR_SOURCE_ID="visko-cybershare-utep-edu"
 
 #
 # Customize: Specify the "base" conversion_identifier
@@ -593,7 +593,7 @@ export CSV2RDF4LOD_CONCURRENCY="2"
 # (done in convert-aggregate.sh and publish/bin/ln-*.sh)
 #
 export CSV2RDF4LOD_PUBLISH_VARWWW_DUMP_FILES="true"
-export CSV2RDF4LOD_PUBLISH_VARWWW_DUMP_FILES="false"
+export CSV2RDF4LOD_PUBLISH_VARWWW_DUMP_FILES="true"
 
 #
 # Customize: The path to the htdocs directory, to host files on the web.
@@ -604,7 +604,7 @@ export CSV2RDF4LOD_PUBLISH_VARWWW_DUMP_FILES="false"
 # (done in convert-aggregate.sh and publish/bin/ln-*.sh)
 #
 export CSV2RDF4LOD_PUBLISH_VARWWW_ROOT=""
-export CSV2RDF4LOD_PUBLISH_VARWWW_ROOT="/var/www"
+export CSV2RDF4LOD_PUBLISH_VARWWW_ROOT="/Applications/MAMP/htdocs"
 
 #
 # Customize: use ln or ln -s when linking from the conversion root
@@ -616,7 +616,7 @@ export CSV2RDF4LOD_PUBLISH_VARWWW_ROOT="/var/www"
 #
 export CSV2RDF4LOD_PUBLISH_VARWWW_LINK_TYPE="soft"
 export CSV2RDF4LOD_PUBLISH_VARWWW_LINK_TYPE="hard"
-export CSV2RDF4LOD_PUBLISH_VARWWW_LINK_TYPE=""
+export CSV2RDF4LOD_PUBLISH_VARWWW_LINK_TYPE="soft"
 
 #
 # Customize: populate publish/lod-mat/ with a file for each URI
@@ -627,7 +627,7 @@ export CSV2RDF4LOD_PUBLISH_VARWWW_LINK_TYPE=""
 # (done in convert-aggregate.sh)
 #
 export CSV2RDF4LOD_PUBLISH_LOD_MATERIALIZATION="true"
-export CSV2RDF4LOD_PUBLISH_LOD_MATERIALIZATION="false"
+export CSV2RDF4LOD_PUBLISH_LOD_MATERIALIZATION="true"
 
 #
 # Customize: populate a directory OTHER THAN publish/lod-mat/ 
@@ -760,7 +760,7 @@ export CSV2RDF4LOD_PUBLISH_4STORE_KB=""
 # (done in convert-aggregate.sh)
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO="true"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO="false" 
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO="true" 
 
 #
 # Customize: 
@@ -772,7 +772,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO="false"
 # See https://github.com/timrdf/csv2rdf4lod-automation/wiki/Publishing-conversion-results-with-a-Virtuoso-triplestore
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_HOME="/opt/virtuoso" 
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_HOME="" 
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_HOME="/opt/virtuoso-opensource" 
 
 #
 # Customize: 
@@ -784,7 +784,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_HOME=""
 # See https://github.com/timrdf/csv2rdf4lod-automation/wiki/Publishing-conversion-results-with-a-Virtuoso-triplestore
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_ISQL_PATH="/opt/virtuoso/bin/isql" 
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_ISQL_PATH="" 
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_ISQL_PATH="/opt/virtuoso-opensource/bin/isql" 
 
 #
 # Customize: 
@@ -796,7 +796,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_ISQL_PATH=""
 # See https://github.com/timrdf/csv2rdf4lod-automation/wiki/Publishing-conversion-results-with-a-Virtuoso-triplestore
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_PORT="1111"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_PORT="" 
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_PORT="1111" 
 
 #
 # Customize: 
@@ -808,7 +808,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_PORT=""
 # See https://github.com/timrdf/csv2rdf4lod-automation/wiki/Publishing-conversion-results-with-a-Virtuoso-triplestore
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_USERNAME="dba"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_USERNAME="" 
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_USERNAME="dba" 
 
 #
 # Customize: 
@@ -820,7 +820,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_USERNAME=""
 # See https://github.com/timrdf/csv2rdf4lod-automation/wiki/Publishing-conversion-results-with-a-Virtuoso-triplestore
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_PASSWORD="dba"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_PASSWORD="" 
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_PASSWORD="dba" 
 
 
 #
@@ -832,7 +832,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_PASSWORD=""
 #
 # See https://github.com/timrdf/csv2rdf4lod-automation/wiki/Publishing-conversion-results-with-a-Virtuoso-triplestore
 #
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_INI_PATH=""
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_INI_PATH="/opt/virtuoso-opensource/var/lib/virtuoso/db/virtuoso.ini"
 
 #
 # Customize: Set the path of the local script used to load/delete data from
@@ -845,7 +845,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_INI_PATH=""
 # (done in convert-aggregate.sh, publish/bin/virtuoso-{load,delete}*.sh)
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SCRIPT_PATH="/opt/virtuoso/scripts/vload"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SCRIPT_PATH="" 
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SCRIPT_PATH="/opt/virtuoso-opensource/scripts/vload" 
 
 #
 # Customize: The publicly accessible SPARQL endpoint service.
@@ -855,7 +855,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SCRIPT_PATH=""
 # (done in pvload.sh)
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://logd.tw.rpi.edu/sparql"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT=""
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://localhost:8890/sparql"
 
 
 #
@@ -870,7 +870,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT=""
 # (done in populate-to-endpoint.sh)
 #
 export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://logd.tw.rpi.edu/sparql" 
-export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="" 
+export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://locahost:8890/sparql" 
 
 #
 # Customize: Load the provenance of SPARQL endpoint named graph 
