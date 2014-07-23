@@ -1,0 +1,1714 @@
+@prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix todo:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:           <http://www.w3.org/2002/07/owl#> .
+@prefix vann:          <http://purl.org/vocab/vann/> .
+@prefix skos:          <http://www.w3.org/2004/02/skos/core#> .
+@prefix time:          <http://www.w3.org/2006/time#> .
+@prefix wgs:           <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geonames:      <http://www.geonames.org/ontology#> .
+@prefix geonamesid:    <http://sws.geonames.org/> .
+@prefix govtrackusgov: <http://www.rdfabout.com/rdf/usgov/geo/us/> .
+@prefix dbpedia:       <http://dbpedia.org/resource/> .
+@prefix dbpediaprop:   <http://dbpedia.org/property/> .
+@prefix dbpediaowl:    <http://dbpedia.org/ontology/> .
+@prefix con:           <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix muo:           <http://purl.oclc.org/NET/muo/muo#> .
+@prefix vs:            <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix frbr:          <http://purl.org/vocab/frbr/core#> .
+@prefix bibo:          <http://purl.org/ontology/bibo/> .
+@prefix prov:          <http://www.w3.org/ns/prov#> .
+@prefix doap:          <http://usefulinc.com/ns/doap#> .
+@prefix nfo:           <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix sio:           <http://semanticscience.org/resource/> .
+@prefix org:           <http://www.w3.org/ns/org#> .
+@prefix vsr:           <http://purl.org/twc/vocab/vsr#> .
+@prefix dcat:          <http://www.w3.org/ns/dcat#> .
+@prefix qb:            <http://purl.org/linked-data/cube#> .
+@prefix pml:           <http://provenanceweb.org/ns/pml#> .
+@prefix dgtwc:         <http://data-gov.tw.rpi.edu/2009/data-gov-twc.rdf#> .
+@prefix dcterms:       <http://purl.org/dc/terms/> .
+@prefix void:          <http://rdfs.org/ns/void#> .
+@prefix scovo:         <http://purl.org/NET/scovo#> .
+@prefix sioc:          <http://rdfs.org/sioc/ns#> .
+@prefix foaf:          <http://xmlns.com/foaf/0.1/> .
+@prefix ov:            <http://open.vocab.org/terms/> .
+@prefix conversion:    <http://purl.org/twc/vocab/conversion/> .
+@prefix :              <http://visko.cybershare.utep.edu/linked-data/source/tamu-edu/dataset/geoservices/version/2013-06/params/enhancement/1/> .
+
+
+#:a_bundle
+#   a conversion:ImplicitBundle;
+#   conversion:property_name "a_property"; # Can also be a URI, e.g. dcterms:title.
+#   conversion:name_template "[/sd]company/[#2]/[r]";
+#   #conversion:type_name     "My Class";   # Can also be a URI, e.g. foaf:Person.
+#.
+
+<http://visko.cybershare.utep.edu/linked-data/source/tamu-edu/dataset/geoservices/version/2013-06/conversion/enhancement/1>
+   a conversion:LayerDataset, void:Dataset;
+
+   conversion:base_uri           "http://visko.cybershare.utep.edu/linked-data"^^xsd:anyURI;
+   conversion:source_identifier  "tamu-edu";
+   conversion:dataset_identifier "geoservices";
+   conversion:version_identifier "2013-06";
+   conversion:enhancement_identifier "1";
+
+   conversion:conversion_process [
+      a conversion:EnhancementConversionProcess;
+      conversion:enhancement_identifier "1";
+
+      dcterms:creator [ a foaf:OnlineAccount; foaf:accountName "nick" ];
+      dcterms:created "2014-07-22T15:50:22-04:00"^^xsd:dateTime;
+
+
+      #conversion:enhance [
+      #   ov:csvRow 2;
+      #   a conversion:DataStartRow;
+      #];
+
+      conversion:delimits_cell ",";
+      #conversion:delimits_cell "	"; # tab
+      #conversion:delimits_cell "|";   # pipe
+      #conversion:delimits_cell ",";   # comma
+
+      #conversion:interpret [
+      #   conversion:symbol        "";
+      #   conversion:interpretation conversion:null; 
+      #];
+      #conversion:enhance [
+      #   conversion:domain_template "[/sd][#5]";
+      #   conversion:domain_name     "Thing";
+      #];
+      #conversion:enhance [
+      #   conversion:class_name "Thing";
+      #   conversion:subclass_of <http://purl.org/...>;
+      #];
+      conversion:enhance [
+         ov:csvCol          1;
+         ov:csvHeader       "Address";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Address";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          2;
+         ov:csvHeader       "City";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "City";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          3;
+         ov:csvHeader       "State";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "State";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          4;
+         ov:csvHeader       "Zip";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Zip";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          5;
+         ov:csvHeader       "Name";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Name";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          6;
+         ov:csvHeader       "AUTO_UNIQUE_ID_2013-07-21_jerienrausch_institutions";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "AUTO_UNIQUE_ID_2013-07-21_jerienrausch_institutions";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          7;
+         ov:csvHeader       "Source";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Source";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          8;
+         ov:csvHeader       "TimeTaken";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "TimeTaken";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          9;
+         ov:csvHeader       "UpdatedGeocoding";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "UpdatedGeocoding";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          10;
+         ov:csvHeader       "Version";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Version";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          11;
+         ov:csvHeader       "ErrorMessage";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "ErrorMessage";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          12;
+         ov:csvHeader       "TransactionId";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "TransactionId";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          13;
+         ov:csvHeader       "naaccrQualCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "naaccrQualCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          14;
+         ov:csvHeader       "naaccrQualType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "naaccrQualType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          15;
+         ov:csvHeader       "FeatureMatchingResultType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FeatureMatchingResultType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          16;
+         ov:csvHeader       "MatchedLocationType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MatchedLocationType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          17;
+         ov:csvHeader       "RegionSizeUnits";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "RegionSizeUnits";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          18;
+         ov:csvHeader       "InterpolationType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "InterpolationType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          19;
+         ov:csvHeader       "RegionSize";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "RegionSize";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          20;
+         ov:csvHeader       "InterpolationSubType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "InterpolationSubType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          21;
+         ov:csvHeader       "FeatureMatchingGeographyType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FeatureMatchingGeographyType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          22;
+         ov:csvHeader       "MatchScore";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MatchScore";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          23;
+         ov:csvHeader       "FeatureMatchingHierarchy";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FeatureMatchingHierarchy";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          24;
+         ov:csvHeader       "TieHandlingStrategyType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "TieHandlingStrategyType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          25;
+         ov:csvHeader       "FeatureMatchingResultTypeTieBreakingNotes";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FeatureMatchingResultTypeTieBreakingNotes";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          26;
+         ov:csvHeader       "GeocodeQualityType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "GeocodeQualityType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          27;
+         ov:csvHeader       "FeatureMatchingHierarchyNotes";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FeatureMatchingHierarchyNotes";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          28;
+         ov:csvHeader       "FeatureMatchingResultTypeNotes";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FeatureMatchingResultTypeNotes";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          29;
+         ov:csvHeader       "FeatureMatchingResultCount";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FeatureMatchingResultCount";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          30;
+         ov:csvHeader       "Latitude";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Latitude";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          31;
+         ov:csvHeader       "Longitude";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Longitude";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          32;
+         ov:csvHeader       "MatchType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MatchType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          33;
+         ov:csvHeader       "CensusYear";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusYear";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          34;
+         ov:csvHeader       "CensusPlaceFips";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusPlaceFips";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          35;
+         ov:csvHeader       "CensusMsaFips";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusMsaFips";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          36;
+         ov:csvHeader       "CensusMetDivFips";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusMetDivFips";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          37;
+         ov:csvHeader       "CensusMcdFips";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusMcdFips";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          38;
+         ov:csvHeader       "CensusCbsaMicro";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusCbsaMicro";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          39;
+         ov:csvHeader       "CensusCbsaFips";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusCbsaFips";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          40;
+         ov:csvHeader       "CensusBlock";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusBlock";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          41;
+         ov:csvHeader       "CensusBlockGroup";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusBlockGroup";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          42;
+         ov:csvHeader       "CensusTract";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusTract";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          43;
+         ov:csvHeader       "CensusCountyFips";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusCountyFips";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          44;
+         ov:csvHeader       "CensusStateFips";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "CensusStateFips";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          45;
+         ov:csvHeader       "naaccrCertCode";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "naaccrCertCode";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          46;
+         ov:csvHeader       "naaccrCertType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "naaccrCertType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          47;
+         ov:csvHeader       "MNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          48;
+         ov:csvHeader       "MNumberFractional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MNumberFractional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          49;
+         ov:csvHeader       "MPreDirectional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPreDirectional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          50;
+         ov:csvHeader       "MName";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MName";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          51;
+         ov:csvHeader       "MSuffix";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MSuffix";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          52;
+         ov:csvHeader       "MPostDirectional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPostDirectional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          53;
+         ov:csvHeader       "MSuiteType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MSuiteType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          54;
+         ov:csvHeader       "MSuiteNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MSuiteNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          55;
+         ov:csvHeader       "MPostOfficeBoxType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPostOfficeBoxType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          56;
+         ov:csvHeader       "MPostOfficeBoxNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPostOfficeBoxNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          57;
+         ov:csvHeader       "MCity";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MCity";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          58;
+         ov:csvHeader       "MState";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MState";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          59;
+         ov:csvHeader       "MZip";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MZip";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          60;
+         ov:csvHeader       "MZipPlus1";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MZipPlus1";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          61;
+         ov:csvHeader       "MZipPlus2";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MZipPlus2";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          62;
+         ov:csvHeader       "MZipPlus3";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MZipPlus3";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          63;
+         ov:csvHeader       "MZipPlus4";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MZipPlus4";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          64;
+         ov:csvHeader       "MZipPlus5";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MZipPlus5";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          65;
+         ov:csvHeader       "MPreQualifier";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPreQualifier";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          66;
+         ov:csvHeader       "MPostQualifier";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPostQualifier";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          67;
+         ov:csvHeader       "MConsolidatedCity";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MConsolidatedCity";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          68;
+         ov:csvHeader       "MMinorCivilDivision";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MMinorCivilDivision";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          69;
+         ov:csvHeader       "MCountySubRegion";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MCountySubRegion";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          70;
+         ov:csvHeader       "MCounty";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MCounty";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          71;
+         ov:csvHeader       "MPreType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPreType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          72;
+         ov:csvHeader       "MPreArticle";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPreArticle";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          73;
+         ov:csvHeader       "MPostArticle";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "MPostArticle";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          74;
+         ov:csvHeader       "PPostArticle";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPostArticle";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          75;
+         ov:csvHeader       "PPreArticle";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPreArticle";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          76;
+         ov:csvHeader       "PPreType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPreType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          77;
+         ov:csvHeader       "PNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          78;
+         ov:csvHeader       "PNumberFractional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PNumberFractional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          79;
+         ov:csvHeader       "PPreDirectional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPreDirectional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          80;
+         ov:csvHeader       "PName";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PName";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          81;
+         ov:csvHeader       "PSuffix";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PSuffix";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          82;
+         ov:csvHeader       "PPostDirectional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPostDirectional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          83;
+         ov:csvHeader       "PSuiteType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PSuiteType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          84;
+         ov:csvHeader       "PSuiteNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PSuiteNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          85;
+         ov:csvHeader       "PPostOfficeBoxType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPostOfficeBoxType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          86;
+         ov:csvHeader       "PPostOfficeBoxNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPostOfficeBoxNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          87;
+         ov:csvHeader       "PCity";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PCity";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          88;
+         ov:csvHeader       "PState";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PState";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          89;
+         ov:csvHeader       "PZip";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PZip";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          90;
+         ov:csvHeader       "PZipPlus1";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PZipPlus1";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          91;
+         ov:csvHeader       "PZipPlus2";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PZipPlus2";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          92;
+         ov:csvHeader       "PZipPlus3";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PZipPlus3";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          93;
+         ov:csvHeader       "PZipPlus4";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PZipPlus4";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          94;
+         ov:csvHeader       "PZipPlus5";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PZipPlus5";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          95;
+         ov:csvHeader       "PPreQualifier";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPreQualifier";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          96;
+         ov:csvHeader       "PPostQualifier";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PPostQualifier";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          97;
+         ov:csvHeader       "PConsolidatedCity";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PConsolidatedCity";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          98;
+         ov:csvHeader       "PMinorCivilDivision";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PMinorCivilDivision";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          99;
+         ov:csvHeader       "PCountySubRegion";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PCountySubRegion";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          100;
+         ov:csvHeader       "PCounty";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "PCounty";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          101;
+         ov:csvHeader       "FNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          102;
+         ov:csvHeader       "FNumberFractional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FNumberFractional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          103;
+         ov:csvHeader       "FPreDirectional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPreDirectional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          104;
+         ov:csvHeader       "FName";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FName";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          105;
+         ov:csvHeader       "FSuffix";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FSuffix";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          106;
+         ov:csvHeader       "FPostDirectional";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPostDirectional";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          107;
+         ov:csvHeader       "FSuiteType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FSuiteType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          108;
+         ov:csvHeader       "FSuiteNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FSuiteNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          109;
+         ov:csvHeader       "FCity";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FCity";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          110;
+         ov:csvHeader       "FState";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FState";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          111;
+         ov:csvHeader       "FZip";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FZip";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          112;
+         ov:csvHeader       "FZipPlus1";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FZipPlus1";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          113;
+         ov:csvHeader       "FZipPlus2";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FZipPlus2";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          114;
+         ov:csvHeader       "FZipPlus3";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FZipPlus3";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          115;
+         ov:csvHeader       "FZipPlus4";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FZipPlus4";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          116;
+         ov:csvHeader       "FZipPlus5";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FZipPlus5";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          117;
+         ov:csvHeader       "FPreQualifier";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPreQualifier";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          118;
+         ov:csvHeader       "FPostQualifier";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPostQualifier";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          119;
+         ov:csvHeader       "FConsolidatedCity";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FConsolidatedCity";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          120;
+         ov:csvHeader       "FMinorCivilDivision";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FMinorCivilDivision";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          121;
+         ov:csvHeader       "FCountySubRegion";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FCountySubRegion";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          122;
+         ov:csvHeader       "FCounty";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FCounty";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          123;
+         ov:csvHeader       "FArea";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FArea";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          124;
+         ov:csvHeader       "FAreaType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FAreaType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          125;
+         ov:csvHeader       "FGeometry";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FGeometry";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          126;
+         ov:csvHeader       "FSource";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FSource";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          127;
+         ov:csvHeader       "FVintage";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FVintage";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          128;
+         ov:csvHeader       "FPrimaryIdValue";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPrimaryIdValue";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          129;
+         ov:csvHeader       "FPostOfficeBoxNumber";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPostOfficeBoxNumber";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          130;
+         ov:csvHeader       "FPrimaryIdField";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPrimaryIdField";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          131;
+         ov:csvHeader       "FGeometrySRID";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FGeometrySRID";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          132;
+         ov:csvHeader       "FPostOfficeBoxType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPostOfficeBoxType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          133;
+         ov:csvHeader       "FPreType";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPreType";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          134;
+         ov:csvHeader       "FPreArticle";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPreArticle";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          135;
+         ov:csvHeader       "FPostArticle";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "FPostArticle";
+         #conversion:equivalent_property dcterms:identifier;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   todo:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      #conversion:enhance [
+      #   ov:csvRow 3,4,5;
+      #   conversion:fromRow 3;
+      #   conversion:toRow   5;
+      #   a conversion:ExampleResource;
+      #];
+   ];
+.
