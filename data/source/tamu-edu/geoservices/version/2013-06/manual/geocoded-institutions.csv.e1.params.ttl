@@ -35,6 +35,10 @@
 @prefix foaf:          <http://xmlns.com/foaf/0.1/> .
 @prefix ov:            <http://open.vocab.org/terms/> .
 @prefix conversion:    <http://purl.org/twc/vocab/conversion/> .
+@prefix frapo:	       <http://purl.org/cerif/frapo/>.
+@prefix vcard:	       <http://www.s3.org/2006/vcard/ns#>.
+@prefix swpo:	       <http://sw-portal.deri.org/ontologies/swportal#>.
+@prefix places:         <http://purl.org/ontology/places#>.
 @prefix :              <http://visko.cybershare.utep.edu/linked-data/source/tamu-edu/dataset/geoservices/version/2013-06/params/enhancement/1/> .
 
 
@@ -76,60 +80,87 @@
       #   conversion:symbol        "";
       #   conversion:interpretation conversion:null; 
       #];
-      #conversion:enhance [
-      #   conversion:domain_template "[/sd][#5]";
-      #   conversion:domain_name     "Thing";
-      #];
-      #conversion:enhance [
-      #   conversion:class_name "Thing";
-      #   conversion:subclass_of <http://purl.org/...>;
-      #];
+      conversion:enhance [
+         conversion:domain_template "[/sd][#5]";
+         conversion:domain_name     "Institution";
+      ];
+      conversion:enhance [
+         conversion:class_name "Institution";
+         conversion:subclass_of frapo:HostInstitution;
+      ];
+
+     conversion:enhance [
+        ov:csvCol 1;
+        conversion:predicate vcard:street-address;
+        conversion:object "[.]";
+     ];
+
+
+      conversion:enhance [
+         a conversion:Omitted;
+	 conversion:fromCol        6;
+         conversion:toCol        29;
+         #conversion:equivalent_property dcterms:subject;
+         #conversion:range_template  "[/sd]topic/[.]";
+         #conversion:range   rdfs:Resource;
+      ];
+
+      conversion:enhance [
+         a conversion:Omitted;
+         conversion:fromCol        32;
+         conversion:toCol        135;
+         #conversion:equivalent_property dcterms:subject;
+         #conversion:range_template  "[/sd]topic/[.]";
+         #conversion:range   rdfs:Resource;
+      ];
+
       conversion:enhance [
          ov:csvCol          1;
          ov:csvHeader       "Address";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "Address";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
+         #conversion:equivalent_property prov:atLocation;
+         conversion:subproperty_of      prov:atLocation;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
+         conversion:range_template  "location_[.]";
+         conversion:range   rdfs:Resource;
+         conversion:range_name  "[/sd]vocab/Location";
       ];
       conversion:enhance [
          ov:csvCol          2;
          ov:csvHeader       "City";
-         #conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "City";
-         #conversion:equivalent_property dcterms:identifier;
+         conversion:equivalent_property places:in;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
+         conversion:range_template "http://dbpedia.org/resource/[>.<], [#3]";
+         conversion:range   rdfs:Resource;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
+	 a conversion:Omitted;
          ov:csvCol          3;
          ov:csvHeader       "State";
-         #conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "State";
-         #conversion:equivalent_property dcterms:identifier;
+         conversion:equivalent_property places:in;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
+         conversion:range_template  "<http://dbpedia.org/resource/[.]";
+         conversion:range   rdfs:Resource;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
          ov:csvCol          4;
          ov:csvHeader       "Zip";
-         #conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "Zip";
-         #conversion:equivalent_property dcterms:identifier;
+         conversion:equivalent_property vcard:postal-code;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
+         conversion:range_template  "[.]";
+         conversion:range   rdfs:Literal;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
@@ -137,14 +168,15 @@
          ov:csvHeader       "Name";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "Name";
-         #conversion:equivalent_property dcterms:identifier;
+         conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range_template  "[.]";
          conversion:range   todo:Literal;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
+	 a conversion:Omitted;
          ov:csvCol          6;
          ov:csvHeader       "AUTO_UNIQUE_ID_2013-07-21_jerienrausch_institutions";
          #conversion:bundled_by [ ov:csvCol 1 ];
@@ -157,7 +189,8 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
-         ov:csvCol          7;
+         a conversion:Omitted; 
+  	 ov:csvCol          7;
          ov:csvHeader       "Source";
          #conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "Source";
@@ -169,6 +202,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
+	 a conversion:Omitted;
          ov:csvCol          8;
          ov:csvHeader       "TimeTaken";
          #conversion:bundled_by [ ov:csvCol 1 ];
@@ -181,6 +215,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
+	 a conversion:Omitted;
          ov:csvCol          9;
          ov:csvHeader       "UpdatedGeocoding";
          #conversion:bundled_by [ ov:csvCol 1 ];
@@ -193,6 +228,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
+	 a conversion:Omitted;
          ov:csvCol          10;
          ov:csvHeader       "Version";
          #conversion:bundled_by [ ov:csvCol 1 ];
@@ -205,6 +241,7 @@
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
+ 	 a conversion:Omitted;
          ov:csvCol          11;
          ov:csvHeader       "ErrorMessage";
          #conversion:bundled_by [ ov:csvCol 1 ];
@@ -435,25 +472,25 @@
       conversion:enhance [
          ov:csvCol          30;
          ov:csvHeader       "Latitude";
-         #conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "Latitude";
-         #conversion:equivalent_property dcterms:identifier;
+         conversion:equivalent_property wgs:lat;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
+         conversion:range_template  "[.]";
+         conversion:range   rdfs:Literal;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
          ov:csvCol          31;
          ov:csvHeader       "Longitude";
-         #conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:bundled_by [ ov:csvCol 1 ];
          #conversion:label   "Longitude";
-         #conversion:equivalent_property dcterms:identifier;
+         conversion:equivalent_property wgs:lon;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
+         conversion:range_template  "[.]";
+         conversion:range   rdfs:Literal;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [

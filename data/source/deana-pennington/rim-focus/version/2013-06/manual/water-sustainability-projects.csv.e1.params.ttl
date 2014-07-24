@@ -89,7 +89,7 @@
      conversion:enhance [
      	ov:csvCol 1;
         conversion:predicate dcterms:subject;
-        conversion:object <http://visko.cybershare.utep.edu/linked-data/source/deana-pennington/dataset/rim-focus/topic/water_sustainability>;
+        conversion:object "[/sd]topic/water_sustainability";
      ];
 
       conversion:enhance [
